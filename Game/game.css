@@ -46,3 +46,14 @@ main {
 #gameGrid > section:hover {
   border: 1px solid black;
 }
+
+.wood{
+  background-image: url('Images/oak-log.png');
+  background-size: cover;
+}
+
+.leaf{
+  background-image: url('Images/oak-leaves.png');
+  background-size: cover; 
+}
+
