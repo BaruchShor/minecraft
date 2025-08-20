@@ -2,6 +2,8 @@ const grid = document.getElementById("gameGrid");
 console.log(`grid`, grid);
 const tools = document.querySelectorAll(".tool");
 const tilesInStorage = document.querySelectorAll(".tile_storage");
+console.log(`tilesInStorage`, tilesInStorage);
+
 let selectedTool = null;
 
 const tileInventory = {
@@ -86,17 +88,20 @@ grid.addEventListener("click", (e) => {
   console.log(targetClass);
   if (selectedTool === "pickaxe" && targetClass === "stone") {
     e.target.className = "sky";
-    tileInventory.stone += 1;
+    //tileInventory.stone += 1;
+    updateInventory("stone");
   }
 
   if (selectedTool === "axe" && targetClass === "log") {
     e.target.className = "sky";
-    tileInventory.stone += 1;
+    //tileInventory.stone += 1;
+    updateInventory("log");
   }
 
   if (selectedTool === "shears" && targetClass === "leave") {
     e.target.className = "sky";
-    tileInventory.stone += 1;
+    //tileInventory.stone += 1;
+    updateInventory("leave");
   }
 
   if (
@@ -104,13 +109,30 @@ grid.addEventListener("click", (e) => {
     (targetClass === "ground" || targetClass === "dirt")
   ) {
     e.target.className = "sky";
-    tileInventory.stone += 1;
+    //tileInventory.stone += 1;
+    updateInventory(targetClass);
   }
 
   if (selectedTool === "stone" && targetClass === "stone") {
     e.target.className = "sky";
-    tileInventory.stone += 1;
+    //tileInventory.stone += 1;
+    updateInventory("stone");
   }
 });
 
-function updateInventory(tileType) {}
+function updateInventory(tileType) {
+  tileInventory[tileType] += 1;
+  tilesInStorage.forEach((tile) => {
+    if (tile.id === tileType) {
+      let count = tile.parentElement.querySelector(".quantity");
+      if (!count) {
+        count = document.createElement("section");
+        count.className = "quantity";
+        tile.parentElement.appendChild(count);
+      }
+      count.textContent = tileInventory[tileType];
+      console.log(count.textContent);
+      console.log(`tilesInStorage`, tilesInStorage);
+    }
+  });
+}
