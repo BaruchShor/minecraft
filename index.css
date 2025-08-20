@@ -1,5 +1,7 @@
 body{
      background-image: url("Images/menu-background.jpg");
+     background-repeat:no-repeat;
+     background-size:cover;
 }
 img{
     height: 140px;
@@ -9,17 +11,20 @@ main{
     display: flex;
     flex-direction: column;     
     align-items: center;
-    margin-top: 15%;
+    margin-top: 13%;
 }
 .links{
     font-family: "Press Start 2P", system-ui;
-    display: block;               
-    width: 400px;
+    display: flex;                 
+    justify-content: center;       
+    align-items: center;           
+    width: 450px;
+    height: 35px;   
     text-align: center;           
     color: white;
-    background-color: grey;
+    background-color: rgb(165, 162, 162);
     padding: 10px;
-    margin: 10px 0; 
+    margin: 10px ; 
     text-decoration: none;     
 }
 
