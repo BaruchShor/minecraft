@@ -1,0 +1,27 @@
+#inventory {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 4rem;
+  padding-left: 1rem;
+}
+
+.inventory_item {
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  border: 0;
+}
+
+.tool {
+  height: 3rem;
+  width: 3rem;
+}
+
+.tile_storage {
+  height: 3rem;
+  width: 3rem;
+}
+
+/* url(./blocks/diamond-pickaxe.webp) center center / cover; */
