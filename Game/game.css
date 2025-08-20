@@ -24,4 +24,24 @@
   width: 3rem;
 }
 
-/* url(./blocks/diamond-pickaxe.webp) center center / cover; */
+main {
+  padding: 0%;
+}
+
+#gameGrid {
+  margin: 0%;
+  min-width: 4800px;
+  height: 1440px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 48px);
+  grid-template-rows: repeat(auto-fit, 48px);
+}
+
+#gameGrid > section {
+  background-color: aqua;
+  border: black;
+}
+
+#gameGrid > section:hover {
+  border: 1px solid black;
+}
