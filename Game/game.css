@@ -1,0 +1,48 @@
+#inventory {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 4rem;
+  padding-left: 1rem;
+  z-index: inherit;
+}
+
+.inventory_item {
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  border: 0;
+}
+
+.tool {
+  height: 3rem;
+  width: 3rem;
+}
+
+.tile_storage {
+  height: 3rem;
+  width: 3rem;
+}
+
+main {
+  padding: 0%;
+}
+
+#gameGrid {
+  margin: 0%;
+  min-width: 4800px;
+  height: 1440px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 48px);
+  grid-template-rows: repeat(auto-fit, 48px);
+}
+
+#gameGrid > section {
+  background-color: #87ceeb;
+  border: black;
+}
+
+#gameGrid > section:hover {
+  border: 1px solid black;
+}
