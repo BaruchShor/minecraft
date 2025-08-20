@@ -5,6 +5,7 @@
   gap: 5px;
   padding-top: 4rem;
   padding-left: 1rem;
+  z-index: inherit;
 }
 
 .inventory_item {
@@ -38,7 +39,7 @@ main {
 }
 
 #gameGrid > section {
-  background-color: aqua;
+  background-color: #87ceeb;
   border: black;
 }
 
