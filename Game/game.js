@@ -1,7 +1,9 @@
 const grid = document.getElementById("gameGrid");
 const tools = document.querySelectorAll(".tool");
 const tilesInStorage = document.querySelectorAll(".tile_storage");
+const newWorld = document.getElementById("newWorld")
 
+function WorldBuilding(){
 for (let i = 0; i <= 1199; i++) {
   const card = document.createElement("section");
   card.className = "sky";
@@ -59,6 +61,9 @@ tilesInStorage.forEach((tile) => {
     }
   });
 });
+}
+
+newWorld.addEventListener("click", WorldBuilding);
 
 // function to change cursor by chosen item
 function changeCursor(img) {
@@ -68,3 +73,4 @@ function changeCursor(img) {
     document.body.style.cursor = "auto";
   }
 }
+WorldBuilding()
