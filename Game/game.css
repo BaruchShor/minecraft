@@ -1,3 +1,7 @@
+body {
+  margin: 0%;
+}
+
 #inventory {
   position: fixed;
   display: flex;
@@ -32,17 +36,40 @@ main {
 #gameGrid {
   margin: 0%;
   min-width: 4800px;
-  height: 1440px;
+  height: 1920px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 48px);
   grid-template-rows: repeat(auto-fit, 48px);
 }
 
 #gameGrid > section {
-  background-color: #87ceeb;
   border: black;
 }
 
 #gameGrid > section:hover {
   border: 1px solid black;
+}
+
+.sky {
+  background-color: #87ceeb;
+}
+
+.ground {
+  background-image: url("../Images/grass.png");
+  background-size: 48px;
+}
+
+.dirt {
+  background-image: url("../Images/dirt.png");
+  background-size: 48px;
+}
+
+.stone {
+  background-image: url("../Images/stone.png");
+  background-size: 48px;
+}
+
+.bedroce {
+  background-image: url("../Images/bedrock.png");
+  background-size: 48px;
 }
