@@ -1,5 +1,6 @@
 const grid = document.getElementById("gameGrid");
 const tools = document.querySelectorAll(".tool");
+let cells;
 const cols = 100;
 const tilesInStorage = document.querySelectorAll(".tile_storage");
 const newWorld = document.getElementById("newWorld");
@@ -43,6 +44,12 @@ function WorldBuilding() {
     const card = document.createElement("section");
     card.className = "bedrock";
     grid.append(card);
+  }
+
+  cells = document.querySelectorAll("#gameGrid section");
+
+  for (let i = 0; i < 10; i++) {
+    createTry();
   }
 
   tools.forEach((tool) => {
@@ -196,8 +203,6 @@ function getTrysHeight() {
   return Math.floor(Math.random() * 5) + 3;
 }
 
-const cells = document.querySelectorAll("#gameGrid section");
-
 function createTry() {
   let numCol;
   let index;
@@ -216,6 +221,7 @@ function createTry() {
     numRow -= 1;
     index = numRow * 100 + numCol;
   }
+  console.log("Hello world");
   numCol -= 3;
   numRow += 1;
   let loop = 7;
@@ -236,10 +242,6 @@ function createTry() {
     loop -= 2;
     numCol += 1;
   }
-}
-
-for (let i = 0; i < 10; i++) {
-  createTry();
 }
 
 WorldBuilding();
