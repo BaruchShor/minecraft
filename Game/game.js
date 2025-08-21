@@ -14,51 +14,42 @@ const tileInventory = {
 };
 
 function eraseWorld() {
-  Array.from(grid.children).forEach((child) => {
-    if (child.className && child.className.includes("gridItem")) {
-      grid.removeChild(child);
-    }
-  });
+  window.location.reload();
+}
 
-  for (let tileType in tileInventory) {
-    tileInventory[tileType] = 0;
-  }
-
-  const existingTilesInStorage = document.querySelectorAll(".tile_storage");
-  existingTilesInStorage.forEach((tile) => {
-    tile.parentElement.remove();
-  });
+function newWorldClick() {
+  eraseWorld();
+  WorldBuilding();
 }
 
 function WorldBuilding() {
-  eraseWorld();
   for (let i = 0; i <= 1199; i++) {
     const card = document.createElement("section");
-    card.className = "sky gridItem";
+    card.className = "sky";
     grid.append(card);
   }
 
   for (let i = 0; i <= 99; i++) {
     const card = document.createElement("section");
-    card.className = "ground gridItem";
+    card.className = "ground";
     grid.append(card);
   }
 
   for (let i = 0; i <= 599; i++) {
     const card = document.createElement("section");
-    card.className = "dirt gridItem";
+    card.className = "dirt";
     grid.append(card);
   }
 
   for (let i = 0; i <= 1599; i++) {
     const card = document.createElement("section");
-    card.className = "stone gridItem";
+    card.className = "stone";
     grid.append(card);
   }
 
   for (let i = 0; i <= 499; i++) {
     const card = document.createElement("section");
-    card.className = "bedrock gridItem";
+    card.className = "bedrock";
     grid.append(card);
   }
 
@@ -92,43 +83,43 @@ grid.addEventListener("click", (e) => {
 
   if (selectedCursor.type !== undefined) {
     if (selectedCursor.type.includes("tool")) {
-      if (selectedCursor.name === "pickaxe" && targetClass.includes("stone")) {
-        e.target.className = "sky gridItem";
+      if (selectedCursor.name === "pickaxe" && targetClass === "stone") {
+        e.target.className = "sky";
         updateInventory("stone");
       }
 
-      if (selectedCursor.name === "axe" && targetClass.includes("log")) {
-        e.target.className = "sky gridItem";
+      if (selectedCursor.name === "axe" && targetClass === "log") {
+        e.target.className = "sky";
         updateInventory("log");
       }
 
-      if (selectedCursor.name === "shears" && targetClass.includes("leave")) {
-        e.target.className = "sky gridItem";
+      if (selectedCursor.name === "shears" && targetClass === "leave") {
+        e.target.className = "sky";
         updateInventory("leave");
       }
 
       if (
         selectedCursor.name === "shovel" &&
-        (targetClass.includes("ground") || targetClass.includes("dirt"))
+        (targetClass === "ground" || targetClass === "dirt")
       ) {
-        e.target.className = "sky gridItem";
-        if (targetClass.includes("ground")) {
+        e.target.className = "sky";
+        if (targetClass === "ground") {
           updateInventory("ground");
         } else {
           updateInventory("dirt");
         }
       }
 
-      if (selectedCursor.name === "stone" && targetClass.includes("stone")) {
-        e.target.className = "sky gridItem";
+      if (selectedCursor.name === "stone" && targetClass === "stone") {
+        e.target.className = "sky";
         updateInventory("stone");
       }
     }
 
     if (selectedCursor.type.includes("tile_storage")) {
       const tileType = selectedCursor.name;
-      if (tileInventory[tileType] > 0 && targetClass.includes("sky")) {
-        e.target.className = tileType + " gridItem";
+      if (tileInventory[tileType] > 0 && targetClass === "sky") {
+        e.target.className = tileType;
         tileInventory[tileType] -= 1;
 
         const existingTile = document.getElementById(tileType);
@@ -198,7 +189,6 @@ function updateInventory(tileType) {
     inventory.appendChild(section);
 
     tileImg.addEventListener("click", () => {
-      //let count = img.parentElement.querySelector(".quantity").textContent;
       document
         .querySelectorAll(".tile_storage")
         .forEach((t) => t.classList.remove("selected"));
@@ -211,9 +201,4 @@ function updateInventory(tileType) {
   }
 }
 
-//WorldBuilding();
 document.addEventListener("DOMContentLoaded", WorldBuilding);
-
-newWorld.addEventListener("click", () => {
-  WorldBuilding();
-});
