@@ -235,7 +235,6 @@ function createTree() {
     numRow -= 1;
     index = numRow * 100 + numCol;
   }
-  console.log("Hello world");
   numCol -= 3;
   numRow += 1;
   let loop = 7;
