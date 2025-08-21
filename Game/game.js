@@ -15,6 +15,15 @@ const tileInventory = {
   leave: 0,
 };
 
+function eraseWorld() {
+  window.location.reload();
+}
+
+function newWorldClick() {
+  eraseWorld();
+  WorldBuilding();
+}
+
 function WorldBuilding() {
   for (let i = 0; i <= 1199; i++) {
     const card = document.createElement("section");
@@ -65,8 +74,6 @@ function WorldBuilding() {
   });
 }
 
-newWorld.addEventListener("click", WorldBuilding);
-
 // function to change cursor by chosen item
 function changeCursor(img) {
   if (img) {
@@ -81,50 +88,58 @@ function changeCursor(img) {
 
 grid.addEventListener("click", (e) => {
   const targetClass = e.target.className;
-  if (selectedCursor.type.includes("tool")) {
-    if (selectedCursor.name === "pickaxe" && targetClass === "stone") {
-      e.target.className = "sky";
-      updateInventory("stone");
-    }
 
-    if (selectedCursor.name === "axe" && targetClass === "log") {
-      e.target.className = "sky";
-      updateInventory("log");
-    }
+  if (selectedCursor.type !== undefined) {
+    if (selectedCursor.type.includes("tool")) {
+      if (selectedCursor.name === "pickaxe" && targetClass === "stone") {
+        e.target.className = "sky";
+        updateInventory("stone");
+      }
 
-    if (selectedCursor.name === "shears" && targetClass === "leave") {
-      e.target.className = "sky";
-      updateInventory("leave");
-    }
+      if (selectedCursor.name === "axe" && targetClass === "log") {
+        e.target.className = "sky";
+        updateInventory("log");
+      }
 
-    if (
-      selectedCursor.name === "shovel" &&
-      (targetClass === "ground" || targetClass === "dirt")
-    ) {
-      e.target.className = "sky";
-      updateInventory(targetClass);
-    }
+      if (selectedCursor.name === "shears" && targetClass === "leave") {
+        e.target.className = "sky";
+        updateInventory("leave");
+      }
 
-    if (selectedCursor.name === "stone" && targetClass === "stone") {
-      e.target.className = "sky";
-      updateInventory("stone");
-    }
-  }
-  if (selectedCursor.type.includes("tile_storage")) {
-    const tileType = selectedCursor.name;
-    if (tileInventory[tileType] > 0 && targetClass === "sky") {
-      e.target.className = tileType;
-      tileInventory[tileType] -= 1;
-
-      const existingTile = document.getElementById(tileType);
-      if (existingTile) {
-        let count = existingTile.parentElement.querySelector(".quantity");
-        if (count) {
-          count.textContent = tileInventory[tileType];
+      if (
+        selectedCursor.name === "shovel" &&
+        (targetClass === "ground" || targetClass === "dirt")
+      ) {
+        e.target.className = "sky";
+        if (targetClass === "ground") {
+          updateInventory("ground");
+        } else {
+          updateInventory("dirt");
         }
-        if (tileInventory[tileType] === 0) {
-          existingTile.parentElement.remove();
-          document.body.style.cursor = "auto";
+      }
+
+      if (selectedCursor.name === "stone" && targetClass === "stone") {
+        e.target.className = "sky";
+        updateInventory("stone");
+      }
+    }
+
+    if (selectedCursor.type.includes("tile_storage")) {
+      const tileType = selectedCursor.name;
+      if (tileInventory[tileType] > 0 && targetClass === "sky") {
+        e.target.className = tileType;
+        tileInventory[tileType] -= 1;
+
+        const existingTile = document.getElementById(tileType);
+        if (existingTile) {
+          let count = existingTile.parentElement.querySelector(".quantity");
+          if (count) {
+            count.textContent = tileInventory[tileType];
+          }
+          if (tileInventory[tileType] === 0) {
+            existingTile.parentElement.remove();
+            document.body.style.cursor = "auto";
+          }
         }
       }
     }
@@ -147,9 +162,9 @@ function updateInventory(tileType) {
     const inventory = document.getElementById("inventory");
     const section = document.createElement("section");
     section.className = "inventory_item";
-    const img = document.createElement("img");
-    img.className = "tile_storage";
-    img.id = tileType;
+    const tileImg = document.createElement("img");
+    tileImg.className = "tile_storage";
+    tileImg.id = tileType;
     // Set src based on tileType
     let src = "";
     switch (tileType) {
@@ -160,7 +175,7 @@ function updateInventory(tileType) {
         src = "../Images/oak-log.png";
         break;
       case "ground":
-        src = "../Images/grass.png";
+        src = "../Images/ground.png";
         break;
       case "dirt":
         src = "../Images/dirt.png";
@@ -171,9 +186,9 @@ function updateInventory(tileType) {
       default:
         src = "";
     }
-    img.src = src;
-    img.alt = "";
-    section.appendChild(img);
+    tileImg.src = src;
+    tileImg.alt = "";
+    section.appendChild(tileImg);
     // Add quantity
     const count = document.createElement("section");
     count.className = "quantity";
@@ -181,15 +196,14 @@ function updateInventory(tileType) {
     section.appendChild(count);
     inventory.appendChild(section);
 
-    img.addEventListener("click", () => {
-      let count = img.parentElement.querySelector(".quantity").textContent;
+    tileImg.addEventListener("click", () => {
       document
         .querySelectorAll(".tile_storage")
         .forEach((t) => t.classList.remove("selected"));
 
-      img.classList.add("selected");
-      if (img.id) {
-        changeCursor(img);
+      tileImg.classList.add("selected");
+      if (tileImg.id) {
+        changeCursor(tileImg);
       }
     });
   }
@@ -244,4 +258,4 @@ function createTry() {
   }
 }
 
-WorldBuilding();
+document.addEventListener("DOMContentLoaded", WorldBuilding);
