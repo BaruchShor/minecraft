@@ -141,9 +141,9 @@ function updateInventory(tileType) {
     const inventory = document.getElementById("inventory");
     const section = document.createElement("section");
     section.className = "inventory_item";
-    const img = document.createElement("img");
-    img.className = "tile_storage";
-    img.id = tileType;
+    const tileImg = document.createElement("img");
+    tileImg.className = "tile_storage";
+    tileImg.id = tileType;
     // Set src based on tileType
     let src = "";
     switch (tileType) {
@@ -154,7 +154,7 @@ function updateInventory(tileType) {
         src = "../Images/oak-log.png";
         break;
       case "ground":
-        src = "../Images/grass.png";
+        src = "../Images/ground.png";
         break;
       case "dirt":
         src = "../Images/dirt.png";
@@ -165,9 +165,9 @@ function updateInventory(tileType) {
       default:
         src = "";
     }
-    img.src = src;
-    img.alt = "";
-    section.appendChild(img);
+    tileImg.src = src;
+    tileImg.alt = "";
+    section.appendChild(tileImg);
     // Add quantity
     const count = document.createElement("section");
     count.className = "quantity";
@@ -175,15 +175,15 @@ function updateInventory(tileType) {
     section.appendChild(count);
     inventory.appendChild(section);
 
-    img.addEventListener("click", () => {
-      let count = img.parentElement.querySelector(".quantity").textContent;
+    tileImg.addEventListener("click", () => {
+      //let count = img.parentElement.querySelector(".quantity").textContent;
       document
         .querySelectorAll(".tile_storage")
         .forEach((t) => t.classList.remove("selected"));
 
-      img.classList.add("selected");
-      if (img.id) {
-        changeCursor(img);
+      tileImg.classList.add("selected");
+      if (tileImg.id) {
+        changeCursor(tileImg);
       }
     });
   }

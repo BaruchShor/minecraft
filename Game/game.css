@@ -88,7 +88,7 @@ main {
 }
 
 .ground {
-  background-image: url("../Images/grass.png");
+  background-image: url("../Images/ground.png");
   background-size: 48px;
 }
 
