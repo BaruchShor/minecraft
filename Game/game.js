@@ -1,6 +1,7 @@
 const grid = document.getElementById("gameGrid");
 const tools = document.querySelectorAll(".tool");
 const tilesInStorage = document.querySelectorAll(".tile_storage");
+const newWorld = document.getElementById("newWorld");
 
 let selectedCursor = {};
 
@@ -12,47 +13,51 @@ const tileInventory = {
   leave: 0,
 };
 
-for (let i = 0; i <= 1199; i++) {
-  const card = document.createElement("section");
-  card.className = "sky";
-  grid.append(card);
-}
+function WorldBuilding() {
+  for (let i = 0; i <= 1199; i++) {
+    const card = document.createElement("section");
+    card.className = "sky";
+    grid.append(card);
+  }
 
-for (let i = 0; i <= 99; i++) {
-  const card = document.createElement("section");
-  card.className = "ground";
-  grid.append(card);
-}
+  for (let i = 0; i <= 99; i++) {
+    const card = document.createElement("section");
+    card.className = "ground";
+    grid.append(card);
+  }
 
-for (let i = 0; i <= 599; i++) {
-  const card = document.createElement("section");
-  card.className = "dirt";
-  grid.append(card);
-}
+  for (let i = 0; i <= 599; i++) {
+    const card = document.createElement("section");
+    card.className = "dirt";
+    grid.append(card);
+  }
 
-for (let i = 0; i <= 1599; i++) {
-  const card = document.createElement("section");
-  card.className = "stone";
-  grid.append(card);
-}
+  for (let i = 0; i <= 1599; i++) {
+    const card = document.createElement("section");
+    card.className = "stone";
+    grid.append(card);
+  }
 
-for (let i = 0; i <= 499; i++) {
-  const card = document.createElement("section");
-  card.className = "bedrock";
-  grid.append(card);
-}
+  for (let i = 0; i <= 499; i++) {
+    const card = document.createElement("section");
+    card.className = "bedrock";
+    grid.append(card);
+  }
 
-tools.forEach((tool) => {
-  tool.addEventListener("click", () => {
-    tools.forEach((t) => t.classList.remove("selected"));
+  tools.forEach((tool) => {
+    tool.addEventListener("click", () => {
+      tools.forEach((t) => t.classList.remove("selected"));
 
-    tool.classList.add("selected");
-    const img = tool;
-    if (img.id) {
-      changeCursor(img);
-    }
+      tool.classList.add("selected");
+      const img = tool;
+      if (img.id) {
+        changeCursor(img);
+      }
+    });
   });
-});
+}
+
+newWorld.addEventListener("click", WorldBuilding);
 
 // function to change cursor by chosen item
 function changeCursor(img) {
@@ -181,3 +186,5 @@ function updateInventory(tileType) {
     });
   }
 }
+
+WorldBuilding();
