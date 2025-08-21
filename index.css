@@ -1,30 +1,35 @@
-body{
-     background-image: url("Images/menu-background.jpg");
-     background-repeat:no-repeat;
-     background-size:cover;
+body {
+  background-image: url("Images/menu-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-img{
-    height: 140px;
-    margin-bottom: 40px;
+img {
+  height: 140px;
+  margin-bottom: 40px;
 }
-main{
-    display: flex;
-    flex-direction: column;     
-    align-items: center;
-    margin-top: 13%;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 13%;
 }
-.links{
-    font-family: "Press Start 2P", system-ui;
-    display: flex;                 
-    justify-content: center;       
-    align-items: center;           
-    width: 450px;
-    height: 35px;   
-    text-align: center;           
-    color: white;
-    background-color: rgb(165, 162, 162);
-    padding: 10px;
-    margin: 10px ; 
-    text-decoration: none;     
+.links {
+  font-family: "Minecraft", sans-serif;
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 35px;
+  text-align: center;
+  color: white;
+  background-color: rgb(165, 162, 162);
+  padding: 10px;
+  margin: 10px;
+  text-decoration: none;
 }
 
+@font-face {
+  font-family: "Minecraft";
+  src: url("./fonts/Minecraft.ttf") format("truetype");
+}
