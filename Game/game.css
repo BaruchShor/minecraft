@@ -9,6 +9,8 @@ header {
   padding-top: 1rem;
   padding-left: 1.2rem;
   gap: 0.5rem;
+  position: fixed;
+  z-index: 2;
 }
 
 header nav,
@@ -31,13 +33,17 @@ header button {
   border: none;
 }
 
+#newWorld:hover {
+  cursor: pointer;
+}
+
 #inventory {
   position: fixed;
   display: flex;
   flex-direction: column;
   padding-top: 4rem;
   padding-left: 1rem;
-  z-index: inherit;
+  z-index: 1;
 }
 
 .inventory_item {
