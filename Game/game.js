@@ -58,7 +58,7 @@ function WorldBuilding() {
   cells = document.querySelectorAll("#gameGrid section");
 
   for (let i = 0; i < 10; i++) {
-    createTry();
+    createTree();
   }
 
   tools.forEach((tool) => {
@@ -209,27 +209,27 @@ function updateInventory(tileType) {
   }
 }
 
-function getColForTry() {
+function getColForTree() {
   return Math.floor(Math.random() * 86) + 15;
 }
 
-function getTrysHeight() {
+function getTreesHeight() {
   return Math.floor(Math.random() * 5) + 3;
 }
 
-function createTry() {
+function createTree() {
   let numCol;
   let index;
   let numRow = 11;
   do {
-    numCol = getColForTry();
+    numCol = getColForTree();
     index = numRow * 100 + numCol;
   } while (
     cells[index].className === "log" ||
     cells[index + 1].className === "log" ||
     cells[index - 1].className === "log"
   );
-  const height = getTrysHeight();
+  const height = getTreesHeight();
   for (let i = 0; i < height - 1; i++) {
     cells[index].className = "log";
     numRow -= 1;
