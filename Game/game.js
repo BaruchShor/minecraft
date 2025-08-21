@@ -38,8 +38,6 @@ function WorldBuilding() {
     grid.append(card);
   }
 
-  console.log(`hi`);
-
   for (let i = 0; i <= 99; i++) {
     const card = document.createElement("section");
     card.className = "ground gridItem";
@@ -91,7 +89,6 @@ function changeCursor(img) {
 
 grid.addEventListener("click", (e) => {
   const targetClass = e.target.className;
-  console.log(`target class name`, targetClass);
 
   if (selectedCursor.type !== undefined) {
     if (selectedCursor.type.includes("tool")) {
@@ -218,6 +215,5 @@ function updateInventory(tileType) {
 document.addEventListener("DOMContentLoaded", WorldBuilding);
 
 newWorld.addEventListener("click", () => {
-  console.log(`new world btn clicked`);
   WorldBuilding();
 });
