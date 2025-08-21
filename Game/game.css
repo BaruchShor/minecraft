@@ -77,3 +77,13 @@ main {
   background-image: url("../Images/bedrock.png");
   background-size: 48px;
 }
+
+.log {
+  background-image: url("../Images/oak-log.png");
+  background-size: 48px;
+}
+.leave {
+  background-image: url("../Images/oak-leaves.png");
+  background-size: 48px;
+  background-color: #87ceeb;
+}

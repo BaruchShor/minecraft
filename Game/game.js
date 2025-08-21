@@ -1,5 +1,6 @@
 const grid = document.getElementById("gameGrid");
 const tools = document.querySelectorAll(".tool");
+const cols = 100;
 const tilesInStorage = document.querySelectorAll(".tile_storage");
 
 for (let i = 0; i <= 1199; i++) {
@@ -67,4 +68,58 @@ function changeCursor(img) {
   } else {
     document.body.style.cursor = "auto";
   }
+}
+
+function getColForTry() {
+  return Math.floor(Math.random() * 86) + 15;
+}
+
+function getTrysHeight() {
+  return Math.floor(Math.random() * 5) + 3;
+}
+
+const cells = document.querySelectorAll("#gameGrid section");
+
+function createTry() {
+  let numCol;
+  let index;
+  let numRow = 11;
+  do {
+    numCol = getColForTry();
+    index = numRow * 100 + numCol;
+  } while (
+    cells[index].className === "log" ||
+    cells[index + 1].className === "log" ||
+    cells[index - 1].className === "log"
+  );
+  const height = getTrysHeight();
+  for (let i = 0; i < height - 1; i++) {
+    cells[index].className = "log";
+    numRow -= 1;
+    index = numRow * 100 + numCol;
+  }
+  numCol -= 3;
+  numRow += 1;
+  let loop = 7;
+  for (let j = 0; j < 3; j++) {
+    for (let loopForRow = 0; loopForRow < 2; loopForRow++) {
+      for (let width = 0; width < loop; width++) {
+        index = numRow * 100 + numCol;
+        cells[index].className = "leave";
+        numCol++;
+        if (j == 0 && loopForRow == 0 && width == 2) {
+          numCol++;
+          width++;
+        }
+      }
+      numCol -= loop;
+      numRow -= 1;
+    }
+    loop -= 2;
+    numCol += 1;
+  }
+}
+
+for (let i = 0; i < 10; i++) {
+  createTry();
 }
