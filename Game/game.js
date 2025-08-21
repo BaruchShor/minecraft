@@ -45,6 +45,10 @@ function WorldBuilding() {
     grid.append(card);
   }
 
+  for (let i = 0; i < 10; i++) {
+    createTry();
+  }
+
   tools.forEach((tool) => {
     tool.addEventListener("click", () => {
       tools.forEach((t) => t.classList.remove("selected"));
@@ -216,6 +220,7 @@ function createTry() {
     numRow -= 1;
     index = numRow * 100 + numCol;
   }
+  console.log("Hello world");
   numCol -= 3;
   numRow += 1;
   let loop = 7;
@@ -236,10 +241,6 @@ function createTry() {
     loop -= 2;
     numCol += 1;
   }
-}
-
-for (let i = 0; i < 10; i++) {
-  createTry();
 }
 
 WorldBuilding();
